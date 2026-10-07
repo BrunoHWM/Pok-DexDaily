@@ -1,159 +1,271 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10111a">
-  <meta name="description" content="Descubra um Pokémon aleatório, seus ataques, atributos e curiosidades na PokéDex Daily.">
 
-  <title>PokéDex Daily — Descubra seu Pokémon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="PokéDex Daily — descubra um Pokémon aleatório e conheça seus tipos, atributos, ataques e curiosidades."
+  >
+
+  <title>PokéDex Daily</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
+
   <script src="script.js" defer></script>
 </head>
 
 <body>
-  <div class="background-glow glow-one"></div>
-  <div class="background-glow glow-two"></div>
 
-  <header class="header">
-    <a class="logo" href="#" aria-label="PokéDex Daily - início">
-      <span class="logo-ball">◉</span>
-      <span>PokéDex<span class="logo-highlight">Daily</span></span>
-    </a>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-content">
 
-    <div class="header-label">
-      <span class="status-dot"></span>
-      UNIVERSO POKÉMON
+      <a href="#" class="logo" aria-label="PokéDex Daily">
+        PokéDex <span>Daily</span>
+      </a>
+
     </div>
   </header>
 
+
+  <!-- INTRODUÇÃO -->
+  <section class="intro container">
+
+    <div class="intro-label">
+      SUA DESCOBERTA DE HOJE
+    </div>
+
+    <h1>
+      Um mundo de <span>Pokémon.</span><br>
+      Uma nova descoberta.
+    </h1>
+
+    <p>
+      Explore um Pokémon aleatório e descubra seus tipos,
+      atributos, ataques e curiosidades.
+    </p>
+
+  </section>
+
+
+  <!-- CONTEÚDO PRINCIPAL -->
   <main class="container">
-    <section class="intro">
-      <span class="eyebrow">SUA DESCOBERTA DE HOJE</span>
 
-      <h1>Um mundo de Pokémon.<br>
-        <span>Uma nova descoberta.</span>
-      </h1>
+    <section class="pokemon-card">
 
-      <p>Descubra criaturas incríveis, conheça seus poderes<br class="desktop-break">
-        e explore o universo Pokémon.
-      </p>
-    </section>
-
-    <section class="pokemon-card" id="pokemon-card" aria-live="polite">
-      <div class="card-top">
-        <span class="pokedex-number" id="pokemon-number">#000</span>
-        <span class="random-label">
-          <span>✦</span> POKÉMON ALEATÓRIO
-        </span>
-      </div>
-
+      <!-- ÁREA PRINCIPAL -->
       <div class="pokemon-main">
-        <div class="pokemon-info">
-          <p class="small-label">VOCÊ DESCOBRIU</p>
 
-          <h2 id="pokemon-name">Carregando...</h2>
-
-          <div class="types" id="pokemon-types"></div>
-
-          <p class="pokemon-description" id="pokemon-description">
-            Procurando uma nova descoberta...
-          </p>
-
-          <button class="discover-button" id="discover-button" type="button">
-            <span class="dice-icon">⟳</span>
-            <span id="button-text">Descobrir Pokémon</span>
-          </button>
-        </div>
-
+        <!-- IMAGEM -->
         <div class="pokemon-art" id="pokemon-art">
-          <div class="art-circle"></div>
-          <div class="art-orbit orbit-one"></div>
-          <div class="art-orbit orbit-two"></div>
 
-          <div class="loading-spinner" id="loading-spinner"></div>
+          <div
+            id="loading-spinner"
+            role="status"
+            aria-label="Carregando Pokémon"
+            hidden
+          ></div>
 
           <img
             id="pokemon-image"
-            class="pokemon-image"
             src=""
             alt=""
             hidden
           >
 
-          <span class="art-caption">POKÉDEX DAILY</span>
         </div>
+
+
+        <!-- INFORMAÇÕES -->
+        <div class="pokemon-info">
+
+          <div class="pokemon-number" id="pokemon-number">
+            #000
+          </div>
+
+          <h2 id="pokemon-name">
+            Carregando...
+          </h2>
+
+          <div
+            class="pokemon-types"
+            id="pokemon-types"
+            aria-label="Tipos do Pokémon"
+          >
+          </div>
+
+          <p
+            class="pokemon-description"
+            id="pokemon-description"
+          >
+            Preparando uma nova descoberta...
+          </p>
+
+          <button
+            id="discover-button"
+            type="button"
+          >
+
+            <span aria-hidden="true">🎲</span>
+
+            <span id="button-text">
+              Descobrir Pokémon
+            </span>
+
+          </button>
+
+        </div>
+
       </div>
 
-      <div class="stats-section">
-        <div class="section-heading">
-          <div>
-            <span class="section-kicker">ANÁLISE DA CRIATURA</span>
-            <h3>Estatísticas</h3>
-          </div>
-          <span class="stats-total" id="stats-total">0 pontos</span>
+
+      <!-- STATUS -->
+      <section class="pokemon-stats">
+
+        <div class="stats-header">
+
+          <h3>
+            Atributos
+          </h3>
+
+          <span
+            class="stats-total"
+            id="stats-total"
+          >
+            —
+          </span>
+
         </div>
 
-        <div class="stats-grid" id="pokemon-stats">
-          <div class="stat-placeholder">Carregando atributos...</div>
+        <div
+          class="stats-grid"
+          id="pokemon-stats"
+        >
+
+          <div class="stat-placeholder">
+            Carregando atributos...
+          </div>
+
         </div>
+
+      </section>
+
+
+      <!-- DETALHES -->
+      <section class="pokemon-details">
+
+        <!-- ATAQUES -->
+        <article class="detail-card">
+
+          <h3>
+            ⚔️ Ataques
+          </h3>
+
+          <div id="pokemon-moves">
+
+            <p class="muted-message">
+              Carregando ataques...
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- CURIOSIDADE -->
+        <article class="detail-card">
+
+          <h3>
+            ✨ Curiosidade
+          </h3>
+
+          <div id="pokemon-curiosity">
+
+            <p>
+              Buscando uma curiosidade interessante...
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- INFORMAÇÕES -->
+        <article class="detail-card">
+
+          <h3>
+            📋 Informações
+          </h3>
+
+          <div id="pokemon-facts">
+
+            <div class="fact-item">
+
+              <span class="fact-label">
+                Altura
+              </span>
+
+              <span class="fact-value">
+                —
+              </span>
+
+            </div>
+
+            <div class="fact-item">
+
+              <span class="fact-label">
+                Peso
+              </span>
+
+              <span class="fact-value">
+                —
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- ERRO -->
+      <div
+        id="error-message"
+        hidden
+        role="alert"
+      >
+        Não foi possível carregar o Pokémon.
       </div>
+
     </section>
 
-    <section class="details-grid">
-      <article class="detail-card">
-        <div class="detail-heading">
-          <div class="detail-icon attack-icon">⚔</div>
-          <div>
-            <span class="section-kicker">PODER DE COMBATE</span>
-            <h3>Seus ataques</h3>
-          </div>
-        </div>
-
-        <p class="detail-subtitle">
-          Alguns dos golpes que essa criatura pode aprender.
-        </p>
-
-        <div class="moves-list" id="pokemon-moves">
-          <p class="muted-message">Carregando ataques...</p>
-        </div>
-      </article>
-
-      <article class="detail-card curiosity-card">
-        <div class="detail-heading">
-          <div class="detail-icon curiosity-icon">✦</div>
-          <div>
-            <span class="section-kicker">VOCÊ SABIA?</span>
-            <h3>Curiosidades</h3>
-          </div>
-        </div>
-
-        <p class="detail-subtitle">
-          Um detalhe interessante sobre esse Pokémon.
-        </p>
-
-        <div class="curiosity-content" id="pokemon-curiosity">
-          <span class="curiosity-star">✧</span>
-          <p>Preparando uma curiosidade...</p>
-        </div>
-
-        <div class="pokemon-facts" id="pokemon-facts"></div>
-      </article>
-    </section>
-
-    <p class="error-message" id="error-message" role="alert" hidden></p>
-
-    <footer class="footer">
-      <div class="footer-logo">◉ PokéDexDaily</div>
-      <p>Feito para quem quer descobrir todos.</p>
-      <span>Dados fornecidos pela PokeAPI</span>
-    </footer>
   </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <p>
+      Feito com ❤️ usando
+      <strong>PokeAPI</strong>
+    </p>
+
+  </footer>
+
 </body>
+
 </html>
